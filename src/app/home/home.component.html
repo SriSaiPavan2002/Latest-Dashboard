@@ -1,55 +1,56 @@
 <div class="home">
-    <div class="kanban-board">
-      <div class="kanban-column" *ngFor="let column of columns; let i = index">
-        <h2>{{ column.name }}</h2>
-  
-        <!-- Connect columns for drag and drop -->
+  <div class="kanban-board" cdkDropListGroup>
+    <div class="kanban-column" *ngFor="let column of columns; let i = index">
+      <h2>{{ column.name }}</h2>
+
+      <!-- Connect columns for drag and drop -->
+      <div
+        cdkDropList
+        id="task-list-{{i}}"
+        [cdkDropListData]="column.tasks"
+        [cdkDropListConnectedTo]="connectedDropLists"
+        class="kanban-tasks"
+        (cdkDropListDropped)="drop($event, i)"
+      >
         <div
-          cdkDropList
-          [cdkDropListData]="column.tasks"
-          class="kanban-tasks"
-          (cdkDropListDropped)="drop($event, i)"
+          *ngFor="let task of column.tasks"
+          class="kanban-card"
+          cdkDrag
         >
-          <div
-            *ngFor="let task of column.tasks"
-            class="kanban-card"
-            cdkDrag
-          >
-            <h3>{{ task.title }}</h3>
-            <p>{{ task.description }}</p>
-            <p><strong>Due Date:</strong> {{ task.dueDate | date }}</p>
-            <button mat-button (click)="editTask(task, column)">Edit</button>
-            <button mat-button color="warn" (click)="deleteTask(task, column)">Delete</button>
-          </div>
+          <h3>{{ task.title }}</h3>
+          <p>{{ task.description }}</p>
+          <p><strong>Due Date:</strong> {{ task.dueDate | date }}</p>
+          <button mat-button (click)="editTask(task, column)">Edit</button>
+          <button mat-button color="warn" (click)="deleteTask(task, column)">Delete</button>
         </div>
-  
-        <button mat-raised-button color="primary" (click)="openTaskDialog(column)">Add Task</button>
       </div>
+
+      <button mat-raised-button color="primary" (click)="openTaskDialog(column)">Add Task</button>
     </div>
-  
-    <!-- Task Dialog -->
-    <ng-template #taskDialog>
-      <h1 mat-dialog-title>{{ taskToEdit ? 'Edit Task' : 'New Task' }}</h1>
-      <div mat-dialog-content>
-        <mat-form-field appearance="fill">
-          <mat-label>Title</mat-label>
-          <input matInput [(ngModel)]="taskForm.title" required>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Description</mat-label>
-          <textarea matInput [(ngModel)]="taskForm.description" required></textarea>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Due Date</mat-label>
-          <input matInput [matDatepicker]="picker" [(ngModel)]="taskForm.dueDate">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-      </div>
-      <div mat-dialog-actions>
-        <button mat-button (click)="closeDialog()">Cancel</button>
-        <button mat-button [mat-dialog-close]="taskForm" cdkFocusInitial>Save</button>
-      </div>
-    </ng-template>
   </div>
-  
+
+  <!-- Task Dialog -->
+  <ng-template #taskDialog>
+    <h1 mat-dialog-title>{{ taskToEdit ? 'Edit Task' : 'New Task' }}</h1>
+    <div mat-dialog-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="taskForm.title" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput [(ngModel)]="taskForm.description" required></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Due Date</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="taskForm.dueDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeDialog()">Cancel</button>
+      <button mat-button [mat-dialog-close]="taskForm" cdkFocusInitial>Save</button>
+    </div>
+  </ng-template>
+</div>

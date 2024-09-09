@@ -27,11 +27,16 @@ export class HomeComponent implements OnInit {
     dueDate: null
   };
 
+  connectedDropLists: string[] = [];
+
   @ViewChild('taskDialog') taskDialog!: TemplateRef<any>;
 
   constructor(public dialog: MatDialog) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Connect all drop lists based on their indices
+    this.connectedDropLists = this.columns.map((_, index) => `task-list-${index}`);
+  }
 
   openTaskDialog(column: any): void {
     this.taskToEdit = null;
