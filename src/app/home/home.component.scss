@@ -1,0 +1,98 @@
+.home {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .kanban-board {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .kanban-column {
+    width: 300px;
+    background-color: #f4f5f7;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+  }
+  
+  .kanban-column h2 {
+    font-size: 18px;
+    margin: 0 0 16px;
+  }
+  
+  .kanban-tasks {
+    min-height: 400px;
+    background: white;
+    border-radius: 4px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 2px dashed transparent; /* For debugging */
+  }
+  
+  .kanban-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .kanban-card h3 {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .kanban-card p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .kanban-card button {
+    margin-top: 8px;
+    align-self: flex-end;
+  }
+  
+  button.mat-raised-button {
+    margin-top: 16px;
+  }
+  
+  .mat-dialog-title {
+    font-size: 20px;
+  }
+  
+  mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  mat-form-field input, mat-form-field textarea {
+    width: 100%;
+  }
+  
+  mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+  
+  /* Temporary styles for debugging */
+  .kanban-tasks.cdk-drop-list {
+    border-color: #ccc; /* Change color to see the drop area clearly */
+  }
+  

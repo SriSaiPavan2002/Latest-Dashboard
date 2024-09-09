@@ -1,0 +1,143 @@
+/* Global dashboard container */
+.dashboard-container {
+    padding: 20px;
+    background-color: #f4f7fa;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header styling */
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .dashboard-header p {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  /* Task and Financial statistics */
+  .dashboard-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  
+    .task-stats, .financial-stats {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      flex: 1;
+      margin-right: 10px;
+    }
+  
+    .financial-stats {
+      margin-right: 0;
+    }
+  
+    p {
+      margin: 0;
+      font-size: 18px;
+    }
+  }
+  
+  /* Button styling */
+  button {
+    background-color: #7890ad;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+  }
+  
+  button:hover {
+    background-color: #357abd;
+  }
+  
+  /* Course progress */
+  .course-progress {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  
+    p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+  }
+  
+  /* Statistics section */
+  .statistics {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  
+    p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+  }
+  
+  /* Weekly calendar styling */
+  .weekly-calendar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  
+    p {
+      margin: 0;
+      font-size: 16px;
+    }
+  }
+  
+  /* Event section */
+  .events {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  
+    p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+  }
+  
+  /* Footer styling */
+  footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  
+    button {
+      background-color: #5a6fcb;
+    }
+  
+    button:hover {
+      background-color: #0824f4;
+    }
+  }
+  
