@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<button mat-button (click)="createNewTask()">Create a new task</button>
+<button mat-raised-button color="primary" (click)="createNewTask()">Create a new task</button>
 
 <h2>Courses</h2>
 <div class="course-progress">
@@ -31,13 +31,7 @@
 
 <h2>Your Calendar</h2>
 <div class="weekly-calendar">
-  <p>Sun: {{ weeklyCalendar['Sun'].join(', ') }}</p>
-  <p>Mon: {{ weeklyCalendar['Mon'].join(', ') }}</p>
-  <p>Tue: {{ weeklyCalendar['Tue'].join(', ') }}</p>
-  <p>Wed: {{ weeklyCalendar['Wed'].join(', ') }}</p>
-  <p>Thu: {{ weeklyCalendar['Thu'].join(', ') }}</p>
-  <p>Fri: {{ weeklyCalendar['Fri'].join(', ') }}</p>
-  <p>Sat: {{ weeklyCalendar['Sat'].join(', ') }}</p>
+  <mat-calendar></mat-calendar>
 </div>
 
 <h2>Upcoming Events</h2>
@@ -47,9 +41,9 @@
   </p>
 </div>
 
-<h2>Chart</h2>
+<h2>Tasks</h2>
 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
 <footer>
-  <button mat-button (click)="logout()">Logout</button>
+  <button mat-raised-button color="accent" (click)="logout()">Logout</button>
 </footer>

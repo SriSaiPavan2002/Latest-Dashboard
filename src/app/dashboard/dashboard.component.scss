@@ -99,6 +99,8 @@
   /* Weekly calendar styling */
   .weekly-calendar {
     display: flex;
+    height: fit-content;
+    width: fit-content;
     justify-content: space-between;
     background-color: #ffffff;
     padding: 20px;
