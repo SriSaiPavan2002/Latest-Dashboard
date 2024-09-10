@@ -1,52 +1,55 @@
 <div class="dashboard-header">
-    <h1>Hello Mark!</h1>
-    <p>It’s good to see you again.</p>
+  <h1>Hello Mark!</h1>
+  <p>It’s good to see you again.</p>
+</div>
+
+<div class="dashboard-stats">
+  <div class="task-stats">
+    <p>Tasks Done: {{ tasksDone }}</p>
+    <p>In Progress: {{ tasksInProgress }}</p>
   </div>
-  
-  <div class="dashboard-stats">
-    <div class="task-stats">
-      <p>Tasks Done: 11</p>
-      <p>In Progress: 4</p>
-    </div>
-    <div class="financial-stats">
-      <p>$2.4k</p>
-      <p>Date: September 9, 2024</p>
-    </div>
+  <div class="financial-stats">
+    <p>{{ financialData }}</p>
+    <p>Date: {{ currentDate }}</p>
   </div>
-  
-  <button mat-button>Create a new task</button>
-  
-  <h2>Courses</h2>
-  <div class="course-progress">
-    <p>Courses Completed: 11</p>
-    <p>Courses In Progress: 36</p>
-  </div>
-  
-  <h2>Statistics</h2>
-  <div class="statistics">
-    <p>Hours Worked</p>
-    <p>Money Paid</p>
-    <p>Tasks Done</p>
-  </div>
-  
-  <h2>Your Calendar</h2>
-  <div class="weekly-calendar">
-    <p>Sun: 30</p>
-    <p>Mon: 31</p>
-    <p>Tue: 1</p>
-    <p>Wed: 2</p>
-    <p>Thu: 3</p>
-    <p>Fri: 4</p>
-    <p>Sat: 5</p>
-  </div>
-  
-  <h2>Upcoming Events</h2>
-  <div class="events">
-    <p>Monday - Daily Standup Call at 9:00 AM</p>
-    <p>Friday - Brand Identity Meeting at 11:00 AM</p>
-  </div>
-  
-  <footer>
-    <button mat-button>Logout</button>
-  </footer>
-  
+</div>
+
+<button mat-button (click)="createNewTask()">Create a new task</button>
+
+<h2>Courses</h2>
+<div class="course-progress">
+  <p>Courses Completed: {{ coursesCompleted }}</p>
+  <p>Courses In Progress: {{ coursesInProgress }}</p>
+</div>
+
+<h2>Statistics</h2>
+<div class="statistics">
+  <p>Hours Worked: {{ statistics.hoursWorked }}</p>
+  <p>Money Paid: {{ statistics.moneyPaid }}</p>
+  <p>Tasks Done Today: {{ statistics.tasksDoneToday }}</p>
+</div>
+
+<h2>Your Calendar</h2>
+<div class="weekly-calendar">
+  <p>Sun: {{ weeklyCalendar['Sun'].join(', ') }}</p>
+  <p>Mon: {{ weeklyCalendar['Mon'].join(', ') }}</p>
+  <p>Tue: {{ weeklyCalendar['Tue'].join(', ') }}</p>
+  <p>Wed: {{ weeklyCalendar['Wed'].join(', ') }}</p>
+  <p>Thu: {{ weeklyCalendar['Thu'].join(', ') }}</p>
+  <p>Fri: {{ weeklyCalendar['Fri'].join(', ') }}</p>
+  <p>Sat: {{ weeklyCalendar['Sat'].join(', ') }}</p>
+</div>
+
+<h2>Upcoming Events</h2>
+<div class="events">
+  <p *ngFor="let event of upcomingEvents">
+    {{ event.time }} - {{ event.description }}
+  </p>
+</div>
+
+<h2>Chart</h2>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+<footer>
+  <button mat-button (click)="logout()">Logout</button>
+</footer>

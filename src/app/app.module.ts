@@ -35,7 +35,6 @@ import { RouterLinkActiveExactDirective } from './main/appRouterLinkActiveExact.
 
 // Routing Module
 import { AppRoutingModule } from './app-routing.module';
-
 @NgModule({
   declarations: [
     AppComponent,

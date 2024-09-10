@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, AfterViewInit {
 
   // Example data for the dashboard
   tasksDone: number = 11;
@@ -13,7 +13,8 @@ export class DashboardComponent implements OnInit {
   financialData: string = '$2.4k';
   coursesCompleted: number = 11;
   coursesInProgress: number = 36;
-  
+  currentDate: string = new Date().toLocaleDateString();
+
   statistics = {
     hoursWorked: '40',
     moneyPaid: '$2,000',
@@ -38,21 +39,47 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // Initialization logic here
+  }
+
+  ngAfterViewInit(): void {
+    this.renderChart();
+  }
+
+  renderChart(): void {
+    // Access CanvasJS from the global window object
+    const CanvasJS = (window as any).CanvasJS;
+    if (CanvasJS) {
+      const chart = new CanvasJS.Chart("chartContainer", {
+        title: {
+          text: "Tasks Done"
+        },
+        data: [
+          {
+            type: "line",
+            dataPoints: [
+              { label: "Sep 1", y: 10 },
+              { label: "Sep 2", y: 15 },
+              { label: "Sep 3", y: 25 },
+              { label: "Sep 4", y: 20 }
+            ]
+          }
+        ]
+      });
+      chart.render();
+    } else {
+      console.error("CanvasJS is not loaded.");
+    }
   }
 
   createTask(): void {
-    // Logic to open the task creation dialog or page
     console.log('Create Task clicked');
   }
 
   createNewTask(): void {
-    // Logic to open a different task creation dialog or page
     console.log('Create a New Task clicked');
   }
 
   logout(): void {
-    // Logic to handle user logout
     console.log('Logout clicked');
   }
 }
