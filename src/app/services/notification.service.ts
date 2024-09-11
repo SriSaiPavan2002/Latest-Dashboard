@@ -8,9 +8,9 @@ export class NotificationService {
 
   // Initial notifications
   private initialNotifications = [
-    { message: 'You have a new message' },
+    { message: 'You have a new course certificate' },
     { message: 'Your order has been shipped' },
-    { message: 'New friend request' }
+    { message: 'New project assigned' }
   ];
 
   // BehaviorSubject to manage notifications
