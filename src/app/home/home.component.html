@@ -20,6 +20,8 @@
           <h3>{{ task.title }}</h3>
           <p>{{ task.description }}</p>
           <p><strong>Due Date:</strong> {{ task.dueDate | date }}</p>
+          <p><strong>Priority:</strong> {{ task.priority }}</p>
+          <p><strong>Category:</strong> {{ task.category }}</p>
           <button mat-button (click)="editTask(task, column)">Edit</button>
           <button mat-button color="warn" (click)="deleteTask(task, column)">Delete</button>
         </div>
@@ -46,6 +48,22 @@
         <input matInput [matDatepicker]="picker" [(ngModel)]="taskForm.dueDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Priority</mat-label>
+        <mat-select [(ngModel)]="taskForm.priority">
+          <mat-option value="Low">Low</mat-option>
+          <mat-option value="Medium">Medium</mat-option>
+          <mat-option value="High">High</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Category</mat-label>
+        <mat-select [(ngModel)]="taskForm.category">
+          <mat-option value="Work">Work</mat-option>
+          <mat-option value="Personal">Personal</mat-option>
+          <mat-option value="Other">Other</mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
     <div mat-dialog-actions>

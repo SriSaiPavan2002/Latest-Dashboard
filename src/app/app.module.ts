@@ -19,6 +19,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
 
 // Components
 import { AppComponent } from './app.component';
@@ -68,7 +70,9 @@ import { NotificationDialogComponent } from './notification-dialog/notification-
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    DragDropModule
+    DragDropModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

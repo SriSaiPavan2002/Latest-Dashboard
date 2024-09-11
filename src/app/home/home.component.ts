@@ -6,6 +6,8 @@ export interface Task {
   title: string;
   description: string;
   dueDate: Date | null;
+  priority: 'Low' | 'Medium' | 'High';
+  category: 'Work' | 'Personal' | 'Other';
 }
 
 @Component({
@@ -24,7 +26,9 @@ export class HomeComponent implements OnInit {
   taskForm: Task = {
     title: '',
     description: '',
-    dueDate: null
+    dueDate: null,
+    priority: 'Low',  // Default priority
+    category: 'Work'  // Default category
   };
 
   connectedDropLists: string[] = [];
@@ -40,7 +44,7 @@ export class HomeComponent implements OnInit {
 
   openTaskDialog(column: any): void {
     this.taskToEdit = null;
-    this.taskForm = { title: '', description: '', dueDate: null };
+    this.taskForm = { title: '', description: '', dueDate: null, priority: 'Low', category: 'Work' };
     this.dialog.open(this.taskDialog, {
       width: '300px',
       data: { column }
