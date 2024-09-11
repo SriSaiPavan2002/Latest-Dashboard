@@ -21,6 +21,8 @@ import { MatTableModule } from '@angular/material/table';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
 
 // Components
 import { AppComponent } from './app.component';
@@ -38,6 +40,7 @@ import { RouterLinkActiveExactDirective } from './main/appRouterLinkActiveExact.
 // Routing Module
 import { AppRoutingModule } from './app-routing.module';
 import { NotificationDialogComponent } from './notification-dialog/notification-dialog.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +52,8 @@ import { NotificationDialogComponent } from './notification-dialog/notification-
     ProfileComponent,
     TimetableComponent,
     RouterLinkActiveExactDirective,
-    NotificationDialogComponent
+    NotificationDialogComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -72,9 +76,10 @@ import { NotificationDialogComponent } from './notification-dialog/notification-
     MatNativeDateModule,
     DragDropModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

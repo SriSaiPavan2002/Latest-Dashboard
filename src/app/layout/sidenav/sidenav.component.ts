@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SidebarService } from '../../services/sidebar.service';
- // Ensure the path is correct
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -12,7 +13,8 @@ export class SidebarComponent implements OnInit {
   isSubmenuOpen = false;
   isDashboardSelected = false;
 
-  constructor(private sidebarService: SidebarService) {}
+  constructor(private sidebarService: SidebarService , private authService: AuthService, private router: Router) { }
+
 
   ngOnInit() {
     this.sidebarService.sidebarVisibility$.subscribe((isVisible: boolean) => {
@@ -32,5 +34,10 @@ export class SidebarComponent implements OnInit {
 
   selectDashboard() {
     this.isDashboardSelected = true;
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }
