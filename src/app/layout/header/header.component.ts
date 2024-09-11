@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';  // Import MatDialog
+import { MatDialog } from '@angular/material/dialog';
 import { SidebarService } from '../../services/sidebar.service';
-import { NotificationDialogComponent } from '../../notification-dialog/notification-dialog.component'; 
+import { NotificationDialogComponent } from '../../notification-dialog/notification-dialog.component';
+import { NotificationService } from '../../services/notification.service'; 
 
 @Component({
   selector: 'app-header',
@@ -10,14 +11,11 @@ import { NotificationDialogComponent } from '../../notification-dialog/notificat
 })
 export class HeaderComponent {
 
-  // Sample list of unseen notifications (can be fetched from a service)
-  unseenNotifications = [
-    { message: 'You have a new message' },
-    { message: 'Your order has been shipped' },
-    { message: 'New friend request' },
-  ];
-
-  constructor(private sidebarService: SidebarService, private dialog: MatDialog) {}
+  constructor(
+    private sidebarService: SidebarService,
+    private dialog: MatDialog,
+    private notificationService: NotificationService  // Inject NotificationService
+  ) {}
 
   // Toggle sidebar method
   toggleSidebar() {
@@ -26,8 +24,9 @@ export class HeaderComponent {
 
   // Method to open notifications dialog
   openNotifications() {
+    // Open the dialog and fetch notifications from the service
     this.dialog.open(NotificationDialogComponent, {
-      data: this.unseenNotifications,  // Passing unseen notifications to dialog
+      data: this.notificationService.getNotifications(),  // Fetch notifications from the service
       width: '300px',  // Adjust dialog width if necessary
     });
   }

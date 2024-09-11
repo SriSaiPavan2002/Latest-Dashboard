@@ -1,1 +1,17 @@
-<p>timetable works!</p>
+<div class="inbox-container">
+  <div class="inbox-header">
+    <h1>Inbox</h1>
+    <div class="notification-count">{{ notifications.length }} Notifications</div>
+  </div>
+
+  <ng-container *ngIf="notifications.length > 0; else emptyState">
+    <div *ngFor="let notification of notifications" class="notification-item">
+      <div class="message">{{ notification.message }}</div>
+      <div class="date">{{ notification.date | date:'short' }}</div>
+    </div>
+  </ng-container>
+
+  <ng-template #emptyState>
+    <div class="empty-state">Your inbox is empty!</div>
+  </ng-template>
+</div>

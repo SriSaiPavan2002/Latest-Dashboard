@@ -41,6 +41,7 @@ import { RouterLinkActiveExactDirective } from './main/appRouterLinkActiveExact.
 import { AppRoutingModule } from './app-routing.module';
 import { NotificationDialogComponent } from './notification-dialog/notification-dialog.component';
 import { LoginComponent } from './login/login.component';
+import { NotificationService } from './services/notification.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,7 +80,7 @@ import { LoginComponent } from './login/login.component';
     MatOptionModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService,NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

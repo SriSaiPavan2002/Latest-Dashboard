@@ -1,0 +1,76 @@
+// General styles for the timetable (inbox) component
+:host {
+    display: block;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f4f7f9; // Light background for contrast
+  }
+  
+  // Container for the inbox card
+  .inbox-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  // Header for the inbox card
+  .inbox-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  
+    h1 {
+      font-size: 24px;
+      color: #333;
+      margin: 0;
+    }
+  
+    .notification-count {
+      font-size: 14px;
+      color: #888;
+      background-color: #e0e0e0;
+      padding: 5px 10px;
+      border-radius: 12px;
+    }
+  }
+  
+  // Styles for each notification item
+  .notification-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 4px;
+  
+    &:last-child {
+      border-bottom: none;
+    }
+  
+    .message {
+      font-size: 16px;
+      color: #333;
+    }
+  
+    .date {
+      font-size: 14px;
+      color: #888;
+    }
+  }
+  
+  // Styling for empty state
+  .empty-state {
+    text-align: center;
+    padding: 50px;
+    font-size: 18px;
+    color: #888;
+  }
+  
