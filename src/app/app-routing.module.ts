@@ -6,7 +6,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { TimetableComponent } from './pages/timetable/timetable.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'profile', component: ProfileComponent },

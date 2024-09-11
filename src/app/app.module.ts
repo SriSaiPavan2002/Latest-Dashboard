@@ -35,17 +35,19 @@ import { RouterLinkActiveExactDirective } from './main/appRouterLinkActiveExact.
 
 // Routing Module
 import { AppRoutingModule } from './app-routing.module';
+import { NotificationDialogComponent } from './notification-dialog/notification-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SidebarComponent,
-    HomeComponent,
     DashboardComponent,
+    HomeComponent,
     MainComponent,
     ProfileComponent,
     TimetableComponent,
-    RouterLinkActiveExactDirective
+    RouterLinkActiveExactDirective,
+    NotificationDialogComponent
   ],
   imports: [
     BrowserModule,
