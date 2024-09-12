@@ -3,7 +3,7 @@
     <h1>Tasks</h1>
     <div class="nav">
       <a href="#" class="active">LIST</a>
-      <a href="#">KANBAN BOARD</a>
+      <a [routerLink]="['/home/kanban']">KANBAN BOARD</a>
     </div>
     <button class="add-task" (click)="openAddTaskModal()">+ ADD TASK</button>
     <div class="search">

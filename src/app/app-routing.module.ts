@@ -17,7 +17,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent,canActivate:[AuthGuard]  },
   { path: 'timetable', component: TimetableComponent,canActivate:[AuthGuard]  },
   {path: 'notification-dialog', component: NotificationDialogComponent,canActivate:[AuthGuard]},
-  {path: 'category', component: CategoryComponent,canActivate:[AuthGuard]}
+  {path: 'category', component: CategoryComponent,canActivate:[AuthGuard]},
+  {path:'home/kanban', component:HomeComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({
