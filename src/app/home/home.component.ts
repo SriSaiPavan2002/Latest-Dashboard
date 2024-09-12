@@ -1,13 +1,14 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CategoriesService } from '../services/categories.service';  // Import CategoriesService
 
 export interface Task {
   title: string;
   description: string;
   dueDate: Date | null;
   priority: 'Low' | 'Medium' | 'High';
-  category: 'Work' | 'Personal' | 'Other';
+  category: string;  // Update to use dynamic categories
 }
 
 @Component({
@@ -28,23 +29,32 @@ export class HomeComponent implements OnInit {
     description: '',
     dueDate: null,
     priority: 'Low',  // Default priority
-    category: 'Work'  // Default category
+    category: ''  // Default category will be updated dynamically
   };
 
+  categories: string[] = []; // To store categories from service
   connectedDropLists: string[] = [];
 
   @ViewChild('taskDialog') taskDialog!: TemplateRef<any>;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private categoriesService: CategoriesService) {}
 
   ngOnInit(): void {
     // Connect all drop lists based on their indices
     this.connectedDropLists = this.columns.map((_, index) => `task-list-${index}`);
+
+    // Fetch categories
+    this.categoriesService.getCategories().subscribe(data => {
+      this.categories = data.map(category => category.name);  // Adjust according to your category structure
+      if (!this.taskForm.category && this.categories.length > 0) {
+        this.taskForm.category = this.categories[0]; // Set default category
+      }
+    });
   }
 
   openTaskDialog(column: any): void {
     this.taskToEdit = null;
-    this.taskForm = { title: '', description: '', dueDate: null, priority: 'Low', category: 'Work' };
+    this.taskForm = { title: '', description: '', dueDate: null, priority: 'Low', category: this.categories.length > 0 ? this.categories[0] : '' };
     this.dialog.open(this.taskDialog, {
       width: '300px',
       data: { column }

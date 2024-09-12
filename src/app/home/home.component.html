@@ -37,32 +37,32 @@
     <div mat-dialog-content>
       <mat-form-field appearance="fill">
         <mat-label>Title</mat-label>
-        <input matInput [(ngModel)]="taskForm.title" required>
+        <input matInput [(ngModel)]="taskForm.title" name="title" required>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Description</mat-label>
-        <textarea matInput [(ngModel)]="taskForm.description" required></textarea>
+        <textarea matInput [(ngModel)]="taskForm.description" name="description" required></textarea>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Due Date</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="taskForm.dueDate">
+        <input matInput [matDatepicker]="picker" [(ngModel)]="taskForm.dueDate" name="dueDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Priority</mat-label>
-        <mat-select [(ngModel)]="taskForm.priority">
+        <mat-select [(ngModel)]="taskForm.priority" name="priority">
           <mat-option value="Low">Low</mat-option>
-          <mat-option value="Medium">Normal</mat-option>
+          <mat-option value="Medium">Medium</mat-option>
           <mat-option value="High">High</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Category</mat-label>
-        <mat-select [(ngModel)]="taskForm.category">
-          <mat-option value="Work">Work</mat-option>
-          <mat-option value="Personal">Personal</mat-option>
-          <mat-option value="Other">Other</mat-option>
+        <mat-select [(ngModel)]="taskForm.category" name="category">
+          <mat-option *ngFor="let category of categories" [value]="category">
+            {{ category }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
