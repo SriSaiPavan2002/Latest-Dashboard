@@ -8,6 +8,7 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { NotificationDialogComponent } from './notification-dialog/notification-dialog.component';
 import { CategoryComponent } from './category/category.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'timetable', component: TimetableComponent,canActivate:[AuthGuard]  },
   {path: 'notification-dialog', component: NotificationDialogComponent,canActivate:[AuthGuard]},
   {path: 'category', component: CategoryComponent,canActivate:[AuthGuard]},
-  {path:'home/kanban', component:HomeComponent,canActivate:[AuthGuard]}
+  {path:'home/kanban', component:HomeComponent,canActivate:[AuthGuard]},
+  { path: 'categories', component: CategoriesComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

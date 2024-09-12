@@ -1,0 +1,39 @@
+<div class="categories-container">
+    <h1>Manage Task Categories</h1>
+    
+    <div class="category-form">
+      <input [(ngModel)]="newCategory" placeholder="New Category" />
+      <button mat-raised-button color="primary" (click)="addCategory()">Add Category</button>
+    </div>
+    
+    <div *ngIf="categories.length > 0">
+      <mat-table [dataSource]="categories" class="mat-elevation-z8">
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let category">
+            <ng-container *ngIf="isEditing && editCategoryId === category.id; else displayCategory">
+              <input [(ngModel)]="category.name" />
+              <button mat-raised-button color="primary" (click)="updateCategory(category.id, category.name)">Save</button>
+              <button mat-raised-button color="warn" (click)="isEditing = false; editCategoryId = null">Cancel</button>
+            </ng-container>
+            <ng-template #displayCategory>
+              {{ category.name }}
+              <button mat-icon-button (click)="editCategory(category.id)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="deleteCategory(category.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </ng-template>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="['name']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['name'];"></mat-row>
+      </mat-table>
+    </div>
+    
+    <div *ngIf="categories.length === 0">
+      <p>No categories available.</p>
+    </div>
+  </div>
+  
