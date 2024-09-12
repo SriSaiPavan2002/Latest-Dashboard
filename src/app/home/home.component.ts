@@ -17,9 +17,9 @@ export interface Task {
 })
 export class HomeComponent implements OnInit {
   columns: { name: string; tasks: Task[] }[] = [
-    { name: 'To Do', tasks: [] },
+    { name: 'Open', tasks: [] },
     { name: 'In Progress', tasks: [] },
-    { name: 'Done', tasks: [] }
+    { name: 'Completed', tasks: [] }
   ];
 
   taskToEdit: Task | null = null;
