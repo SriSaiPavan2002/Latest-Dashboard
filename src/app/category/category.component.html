@@ -37,7 +37,7 @@
           <td>{{ task.dueDate | date: 'MM/dd/yyyy' }}</td>
           <td>{{ task.owner }}</td>
           <td class="status" [ngClass]="task.status">{{ task.status }}</td>
-          <td><i class="fas fa-pen edit-icon" (click)="onEditTask(task)"></i></td>
+          <td><i class="fas fa-pen edit-icon" (click)="openEditTaskModal(task)"></i></td>
         </tr>
       </tbody>
     </table>
@@ -114,5 +114,78 @@
       </div>
     </div>
     <button class="modal-close is-large" aria-label="close" (click)="closeAddTaskModal()"></button>
+  </div>
+
+  <!-- Edit Task Modal -->
+  <div class="modal" [ngClass]="{ 'is-active': isEditTaskModalOpen }">
+    <div class="modal-background" (click)="closeEditTaskModal()"></div>
+    <div class="modal-content">
+      <div class="box">
+        <h2 class="title">Edit Task</h2>
+        <form (ngSubmit)="saveEditedTask()">
+          <div class="field" *ngIf="taskToEdit">
+            <label class="label">Subject</label>
+            <div class="control">
+              <input class="input" type="text" [(ngModel)]="taskToEdit.subject" name="subject" required />
+            </div>
+          </div>
+          <div class="field" *ngIf="taskToEdit">
+            <label class="label">Company</label>
+            <div class="control">
+              <input class="input" type="text" [(ngModel)]="taskToEdit.company" name="company" required />
+            </div>
+          </div>
+          <div class="field" *ngIf="taskToEdit">
+            <label class="label">Priority</label>
+            <div class="control">
+              <div class="select">
+                <select [(ngModel)]="taskToEdit.priority" name="priority">
+                  <option value="normal">Normal</option>
+                  <option value="high">High</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field" *ngIf="taskToEdit">
+            <label class="label">Start Date</label>
+            <div class="control">
+              <input class="input" type="date" [(ngModel)]="taskToEdit.startDate" name="startDate" required />
+            </div>
+          </div>
+          <div class="field" *ngIf="taskToEdit">
+            <label class="label">Due Date</label>
+            <div class="control">
+              <input class="input" type="date" [(ngModel)]="taskToEdit.dueDate" name="dueDate" required />
+            </div>
+          </div>
+          <div class="field" *ngIf="taskToEdit">
+            <label class="label">Owner</label>
+            <div class="control">
+              <input class="input" type="text" [(ngModel)]="taskToEdit.owner" name="owner" required />
+            </div>
+          </div>
+          <div class="field" *ngIf="taskToEdit">
+            <label class="label">Status</label>
+            <div class="control">
+              <div class="select">
+                <select [(ngModel)]="taskToEdit.status" name="status">
+                  <option value="open">Open</option>
+                  <option value="in-progress">In Progress</option>
+                  <option value="completed">Completed</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <button class="button is-primary" type="submit">Save Task</button>
+              <button class="button" type="button" (click)="closeEditTaskModal()">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close" (click)="closeEditTaskModal()"></button>
   </div>
 </div>
