@@ -42,6 +42,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NotificationDialogComponent } from './notification-dialog/notification-dialog.component';
 import { LoginComponent } from './login/login.component';
 import { NotificationService } from './services/notification.service';
+import { CategoryComponent } from './category/category.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,8 @@ import { NotificationService } from './services/notification.service';
     TimetableComponent,
     RouterLinkActiveExactDirective,
     NotificationDialogComponent,
-    LoginComponent
+    LoginComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

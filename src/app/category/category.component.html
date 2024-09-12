@@ -1,0 +1,119 @@
+<div class="container">
+  <div class="header">
+    <h1>Tasks</h1>
+    <div class="nav">
+      <a href="#" class="active">LIST</a>
+      <a href="#">KANBAN BOARD</a>
+      <a href="#">GANTT</a>
+    </div>
+    <button class="add-task" (click)="openAddTaskModal()">+ ADD TASK</button>
+    <div class="search">
+      <input type="text" placeholder="Task Search" (input)="onSearch($event)" />
+      <i class="fas fa-search"></i>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th><input type="checkbox" /></th>
+          <th>Subject <i class="fas fa-sort" (click)="onSort('subject')"></i></th>
+          <th>Company <i class="fas fa-sort" (click)="onSort('company')"></i></th>
+          <th>Priority <i class="fas fa-sort" (click)="onSort('priority')"></i></th>
+          <th>Start Date <i class="fas fa-sort" (click)="onSort('startDate')"></i></th>
+          <th>Due Date <i class="fas fa-sort" (click)="onSort('dueDate')"></i></th>
+          <th>Owner <i class="fas fa-sort" (click)="onSort('owner')"></i></th>
+          <th>Status <i class="fas fa-sort" (click)="onSort('status')"></i></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of filteredTasks">
+          <td><input type="checkbox" [(ngModel)]="task.selected" /></td>
+          <td>{{ task.subject }}</td>
+          <td>{{ task.company }}</td>
+          <td class="priority" [ngClass]="task.priority">{{ task.priority }}</td>
+          <td>{{ task.startDate | date: 'MM/dd/yyyy' }}</td>
+          <td>{{ task.dueDate | date: 'MM/dd/yyyy' }}</td>
+          <td>{{ task.owner }}</td>
+          <td class="status" [ngClass]="task.status">{{ task.status }}</td>
+          <td><i class="fas fa-pen edit-icon" (click)="onEditTask(task)"></i></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Add Task Modal -->
+  <div class="modal" [ngClass]="{ 'is-active': isAddTaskModalOpen }">
+    <div class="modal-background" (click)="closeAddTaskModal()"></div>
+    <div class="modal-content">
+      <div class="box">
+        <h2 class="title">Add New Task</h2>
+        <form (ngSubmit)="onSubmit()">
+          <div class="field">
+            <label class="label">Subject</label>
+            <div class="control">
+              <input class="input" type="text" [(ngModel)]="newTask.subject" name="subject" required />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Company</label>
+            <div class="control">
+              <input class="input" type="text" [(ngModel)]="newTask.company" name="company" required />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Priority</label>
+            <div class="control">
+              <div class="select">
+                <select [(ngModel)]="newTask.priority" name="priority">
+                  <option value="normal">Normal</option>
+                  <option value="high">High</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Start Date</label>
+            <div class="control">
+              <input class="input" type="date" [(ngModel)]="newTask.startDate" name="startDate" required />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Due Date</label>
+            <div class="control">
+              <input class="input" type="date" [(ngModel)]="newTask.dueDate" name="dueDate" required />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Owner</label>
+            <div class="control">
+              <input class="input" type="text" [(ngModel)]="newTask.owner" name="owner" required />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Status</label>
+            <div class="control">
+              <div class="select">
+                <select [(ngModel)]="newTask.status" name="status">
+                  <option value="open">Open</option>
+                  <option value="in-progress">In Progress</option>
+                  <option value="completed">Completed</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <button class="button is-primary" type="submit">Add Task</button>
+              <button class="button" type="button" (click)="closeAddTaskModal()">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close" (click)="closeAddTaskModal()"></button>
+  </div>
+</div>
