@@ -7,12 +7,11 @@ import {tap,catchError} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CategoriesService {
-  private apiUrl = 'http://localhost:3000/categories'; // Adjust URL as needed
+  private apiUrl = 'http://localhost:3000/categories';
   private categoriesSubject = new BehaviorSubject<any[]>([]);
   categories$ = this.categoriesSubject.asObservable();
 
   constructor(private http: HttpClient) {
-    // Initial fetch
     this.fetchCategories();
   }
 
@@ -28,19 +27,19 @@ export class CategoriesService {
 
   addCategory(category: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, category).pipe(
-      tap(() => this.fetchCategories()) // Update categories after adding
+      tap(() => this.fetchCategories())
     );
   }
 
   updateCategory(id: number, category: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${id}`, category).pipe(
-      tap(() => this.fetchCategories()) // Update categories after updating
+      tap(() => this.fetchCategories())
     );
   }
 
   deleteCategory(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${id}`).pipe(
-      tap(() => this.fetchCategories()) // Update categories after deleting
+      tap(() => this.fetchCategories())
     );
   }
 }
